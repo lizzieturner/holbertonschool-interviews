@@ -13,9 +13,9 @@ int binary_search(int *array, size_t size, int value)
 {
 	if (array != NULL)
 	{
-		return(recursive_binary(array, 0, size - 1, value));
+		return (recursive_binary(array, 0, size - 1, value));
 	}
-	return(-1);
+	return (-1);
 }
 
 /**
@@ -31,9 +31,10 @@ int binary_search(int *array, size_t size, int value)
 int recursive_binary(int *array, size_t left, size_t right, int value)
 {
 	int mid = left + (right - left) / 2;
+
 	if (array[mid] == value)
 		return (mid);
-	print_array(array, left, right);;
+	print_array(array, left, right);
 	if (right >= left)
 	{
 		if (array[mid] > value)
