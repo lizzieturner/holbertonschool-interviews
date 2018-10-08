@@ -57,7 +57,7 @@ void print_array(int *array, size_t left, size_t right)
 {
 	if (left > right)
 		return;
-	printf("Searching in array:");
+	printf("Searching in array: ");
 	while (left < right)
 	{
 		printf("%u, ", array[left]);
