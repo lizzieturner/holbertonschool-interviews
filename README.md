@@ -1,0 +1,1 @@
+This repository contains interview prep projects and other resources to be utilized in a job hunt.   
