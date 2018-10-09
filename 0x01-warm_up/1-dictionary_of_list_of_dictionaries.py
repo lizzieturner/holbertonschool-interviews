@@ -12,26 +12,17 @@ def get_info():
     '''
     filename = 'todo_all_employees.json'
     json_file = open(filename, 'w')
-    i = 1
-    while i < 11:
-        user_id = i
-        user = requests.get('https://jsonplaceholder.typicode.com/users/{}'
-                            .format(user_id)).json()
-        todo = requests.get(
-            'https://jsonplaceholder.typicode.com/todos?userId={}'
-            .format(user_id)).json()
-        name = user.get('username')
-        all_tasks = []
-        for task in todo:
-            current = {}
-            current['task'] = task.get('title')
-            current['completed'] = task.get('completed')
-            current['username'] = name
-            all_tasks.append(current)
-        json_tasks = {}
-        json_tasks[user_id] = all_tasks
-        json.dump(json_tasks, json_file)
-        i += 1
+    json_tasks = {}
+    users = requests.get('https://jsonplaceholder.typicode.com/users').json()
+    todo = requests.get('https://jsonplaceholder.typicode.com/todos').json()
+    for user in users:
+        name = user['username']
+        all_tasks = [
+            { 'username': name, 'task': task['title'],
+              'completed': task['completed']} for task in todo
+            if task['userId'] == user['id']]
+        json_tasks[user['id']] = all_tasks
+    json.dump(json_tasks, json_file)
 
 
 if __name__ == "__main__":
