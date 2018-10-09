@@ -6,10 +6,7 @@ import json
 import requests
 
 
-def get_info():
-    '''
-        returns all tasks for all employees in JSON format
-    '''
+if __name__ == "__main__":
     filename = 'todo_all_employees.json'
     json_file = open(filename, 'w')
     json_tasks = {}
@@ -23,7 +20,3 @@ def get_info():
             if task['userId'] == user['id']]
         json_tasks[user['id']] = all_tasks
     json.dump(json_tasks, json_file)
-
-
-if __name__ == "__main__":
-    get_info()
