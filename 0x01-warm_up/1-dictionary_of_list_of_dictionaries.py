@@ -18,8 +18,8 @@ def get_info():
     for user in users:
         name = user['username']
         all_tasks = [
-            { 'username': name, 'task': task['title'],
-              'completed': task['completed']} for task in todo
+            {'username': name, 'task': task['title'],
+             'completed': task['completed']} for task in todo
             if task['userId'] == user['id']]
         json_tasks[user['id']] = all_tasks
     json.dump(json_tasks, json_file)
