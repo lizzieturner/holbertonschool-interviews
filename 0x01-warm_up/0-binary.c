@@ -32,13 +32,13 @@ int recursive_binary(int *array, size_t left, size_t right, int value)
 {
 	int mid = left + (right - left) / 2;
 
+	print_array(array, left, right);
 	if (array[mid] == value)
 		return (mid);
-	print_array(array, left, right);
 	if (right >= left)
 	{
 		if (array[mid] > value)
-			return (recursive_binary(array, left, mid - 1, value));
+			return (recursive_binary(array, left, mid, value));
 		return (recursive_binary(array, mid + 1, right, value));
 
 	}
